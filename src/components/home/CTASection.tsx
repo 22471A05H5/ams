@@ -8,7 +8,7 @@ const CTASection = () => {
   };
 
   return (
-    <section className="hero-gradient flat-panels tight-panels pt-12 pb-0 mb-4">
+    <section className="hero-gradient flat-panels tight-panels pt-12 pb-0 mb-0">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="hero-text text-3xl md:text-4xl mb-6">
           Ready To Grow Your Business?{" "}

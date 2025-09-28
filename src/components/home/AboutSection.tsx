@@ -12,9 +12,9 @@ const AboutSection = () => {
   ];
 
   const stats = [
-    { icon: Users, number: "500+", label: "Happy Clients" },
-    { icon: Award, number: "150+", label: "Projects Completed" },
-    { icon: Target, number: "95%", label: "Success Rate" },
+    { icon: Users, number: "100+", label: "Happy Clients" },
+    { icon: Award, number: "100+", label: "Projects Completed" },
+    { icon: Target, number: "3+", label: "Years Experience" },
   ];
 
   return (
@@ -75,7 +75,7 @@ const AboutSection = () => {
               className="w-full h-auto rounded-2xl shadow-2xl"
             />
             <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
-              <div className="text-3xl font-bold text-primary">5+</div>
+              <div className="text-3xl font-bold text-primary">3+</div>
               <div className="text-sm text-gray-600">Years Experience</div>
             </div>
           </div>

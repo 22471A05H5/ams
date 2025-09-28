@@ -88,10 +88,10 @@ const About = () => {
                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                   <strong>Our Mission:</strong> To work closely with client teams by understanding their current business and marketing challenges. AMS ElevateX develops efficient and creative marketing strategies aligned with current trends to help businesses dominate competitive market spaces through strategic marketing efforts.
                 </p>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                   <strong>Our Vision:</strong> To become India's most trusted digital growth partner for startups and SMEs, using advanced analytics to understand audiences, creating innovative campaigns that stand out, and leveraging the latest marketing technology to connect businesses with their ideal customers.
                 </p>
-                <p className="text-gray-600 mb-8 leading-relaxed">
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                   We are experts in using data, creativity, and technology to help startups thrive by finding their audience and standing out from the competition. Our goal is to build meaningful partnerships that drive sustainable growth and create impactful digital experiences.
                 </p>
                 

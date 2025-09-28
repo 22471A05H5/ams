@@ -437,32 +437,65 @@
 
   /* Floating and Glowing Neon Effects for Landing Page Image */
   .hero-media-wrap {
+    position: relative;
     animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Layer 3 - Third shadow layer (outermost) */
+  .hero-media-wrap::before {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    right: -24px;
+    bottom: -24px;
+    background: rgba(24, 203, 150, 0.2);  /* most transparent green */
+    border: 2px solid rgba(24, 203, 150, 0.3);
+    border-radius: 20px;
+    z-index: -3;
   }
 
   .hero-media-frame {
     position: relative;
-    animation: neonGlow 3s ease-in-out infinite alternate;
+    background: #18cb96;        /* main card color as specified */
+    border: 3px solid #18CB96;
+    border-radius: 20px;
+    padding: 8px;
+    overflow: visible;          /* changed to visible for layers */
+    
+    /* Smooth transition for hover effects */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-
-  .hero-media-frame::before {
-    content: '';
+  
+  /* Layer 1 - First shadow layer */
+  .hero-media-frame::after {
+    content: "";
     position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    background: linear-gradient(45deg, 
-      rgba(24, 203, 150, 0.8), 
-      rgba(59, 130, 246, 0.8), 
-      rgba(168, 85, 247, 0.8), 
-      rgba(24, 203, 150, 0.8)
-    );
-    border-radius: inherit;
+    top: 8px;
+    left: 8px;
+    right: -8px;
+    bottom: -8px;
+    background: rgba(24, 203, 150, 0.7);  /* semi-transparent green */
+    border: 2px solid rgba(24, 203, 150, 0.8);
+    border-radius: 20px;
     z-index: -1;
-    animation: borderGlow 4s linear infinite;
-    filter: blur(1px);
   }
+  
+  /* Layer 2 - Second shadow layer */
+  .hero-media-frame::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    right: -16px;
+    bottom: -16px;
+    background: rgba(24, 203, 150, 0.4);  /* more transparent green */
+    border: 2px solid rgba(24, 203, 150, 0.5);
+    border-radius: 20px;
+    z-index: -2;
+  }
+  
+
 
   /* Floating Animation */
   @keyframes float {
@@ -471,6 +504,24 @@
     }
     50% {
       transform: translateY(-12px);
+    }
+  }
+
+  /* Neon Pulse Animation */
+  @keyframes neonPulse {
+    0% {
+      box-shadow: 
+        0 0 20px rgba(24, 203, 150, 0.4),
+        0 0 40px rgba(24, 203, 150, 0.3),
+        0 0 60px rgba(24, 203, 150, 0.2),
+        inset 0 0 20px rgba(24, 203, 150, 0.1);
+    }
+    100% {
+      box-shadow: 
+        0 0 30px rgba(24, 203, 150, 0.6),
+        0 0 60px rgba(24, 203, 150, 0.4),
+        0 0 90px rgba(24, 203, 150, 0.3),
+        inset 0 0 30px rgba(24, 203, 150, 0.2);
     }
   }
 
