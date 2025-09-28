@@ -79,8 +79,8 @@ const SEOService = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="hero-gradient section-padding">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="hero-gradient flex items-center justify-center relative">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-6 md:pt-24 pb-20 relative z-10">
             <div className="bg-white/10 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <Search className="h-10 w-10 text-white" />
             </div>
@@ -97,6 +97,21 @@ const SEOService = () => {
                 <img src={seoImg} alt="SEO service" className="w-full h-auto" />
               </div>
               <div className="hero-media-shadow" />
+            </div>
+          </div>
+        </section>
+
+        {/* Experts Ready To Answer */}
+        <section className="section-padding bg-white">
+          <div className="max-w-4xl mx-auto">
+            <div className="expert-cta rounded-2xl p-8 md:p-10 text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Experts Ready To Answer</h3>
+              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                We understand you may have questions. Our team of specialists is ready to provide clear and informative answers to all your inquiries.
+              </p>
+              <Link to="/contact">
+                <Button className="btn-gradient border-0 px-8 py-6 rounded-full font-semibold">Contact Us</Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -148,72 +163,27 @@ const SEOService = () => {
           </div>
         </section>
 
-        {/* Pricing */}
-        <section className="section-padding bg-gray-50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Choose Your <span className="text-primary">SEO Package</span>
-              </h2>
-              <p className="text-lg text-gray-600">
-                Select the perfect plan for your business needs and budget.
-              </p>
-            </div>
+        
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {packages.map((pkg, index) => (
-                <div 
-                  key={index} 
-                  className={`bg-white p-8 rounded-2xl shadow-lg relative ${
-                    pkg.popular ? 'border-2 border-primary' : ''
-                  }`}
-                >
-                  {pkg.popular && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-medium">
-                      Most Popular
-                    </div>
-                  )}
-                  
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
-                    <div className="text-3xl font-bold text-primary">{pkg.price}</div>
-                  </div>
-                  
-                  <div className="space-y-4 mb-8">
-                    {pkg.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center">
-                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <Link to="/contact">
-                    <Button className={`w-full ${pkg.popular ? 'btn-gradient border-0' : ''}`}>
-                      Get Started
-                    </Button>
-                  </Link>
-                </div>
+        {/* FAQ Section */}
+        <section className="section-padding bg-white">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">SEO FAQ</h2>
+            </div>
+            <div className="space-y-4">
+              {[
+                { q: "How long does SEO take to show results?", a: "Typically 8–12 weeks for noticeable ranking movement, faster if technical issues are small and content is strong." },
+                { q: "Do you provide content for SEO?", a: "Yes. We create SEO-optimized content and update existing pages to improve topical depth and intent match." },
+                { q: "What about technical SEO?", a: "We fix crawl, indexation, speed, schema, and internal linking issues as part of our roadmap." },
+                { q: "Do you do local SEO?", a: "Yes. We optimize Google Business Profile, NAP consistency, and local landing pages for location-based queries." }
+              ].map((item, i) => (
+                <details key={i} className="bg-gray-50 rounded-xl p-5">
+                  <summary className="font-semibold text-gray-900 cursor-pointer">{item.q}</summary>
+                  <p className="mt-2 text-gray-600">{item.a}</p>
+                </details>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="hero-gradient flat-panels section-padding">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="hero-text text-3xl md:text-4xl mb-6">
-              Ready to Boost Your Rankings?
-            </h2>
-            <p className="text-white/90 text-lg mb-8">
-              Get a free SEO audit and discover how we can improve your search visibility.
-            </p>
-            <Link to="/contact">
-              <Button className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-4 rounded-full shadow-lg">
-                Get Free SEO Audit
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
           </div>
         </section>
       </main>

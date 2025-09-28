@@ -1,80 +1,82 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-import { Search, Share2, MousePointer, Globe, PenTool, ArrowRight, CheckCircle } from "lucide-react";
+import { Share2, Users, Target, Globe, Palette, ArrowRight, CheckCircle, Star, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import teamPhoto from "@/assets/team-photo.jpg";
+import heroImg from "@/assets/1.webp";
 
 const Services = () => {
   const services = [
     {
-      id: "seo",
-      title: "SEO Optimization",
-      description: "Boost your search rankings and organic traffic with our proven SEO strategies.",
-      icon: Search,
-      color: "bg-blue-100 text-blue-600",
-      features: [
-        "Keyword Research & Analysis",
-        "On-Page Optimization", 
-        "Technical SEO Audits",
-        "Link Building Strategies"
-      ],
-      startingPrice: "$299/month"
-    },
-    {
       id: "social-media",
-      title: "Social Media Marketing",
-      description: "Engage your audience and build brand awareness across all major platforms.",
+      title: "Social Media Content Creation & Handling",
+      description: "Plan, create, and manage daily social content that grows your audience and engagement.",
       icon: Share2,
       color: "bg-green-100 text-green-600",
       features: [
-        "Social Media Strategy",
-        "Content Creation & Curation",
+        "Content Calendar & Copy",
+        "Posts, Reels & Stories",
         "Community Management",
-        "Social Advertising Campaigns"
+        "Monthly Reporting"
       ],
       startingPrice: "$199/month"
     },
     {
-      id: "ppc",
-      title: "PPC Advertising",
-      description: "Drive targeted traffic and maximize ROI with expertly managed campaigns.",
-      icon: MousePointer,
+      id: "leads",
+      title: "Leads Generation & Management",
+      description: "Capture, qualify, and route leads with automations that turn interest into booked calls.",
+      icon: Users,
+      color: "bg-blue-100 text-blue-600",
+      features: [
+        "Landing Pages & Forms",
+        "CRM & Pipeline Setup",
+        "Automated Follow-ups",
+        "Attribution & Reporting"
+      ],
+      startingPrice: "$299/month"
+    },
+    {
+      id: "performance",
+      title: "Performance Marketing (Meta Ads, Google Ads & SEO)",
+      description: "Full-funnel growth with paid + organic working together to scale profitably.",
+      icon: Target,
       color: "bg-purple-100 text-purple-600",
       features: [
-        "Google Ads Management",
-        "Facebook & Instagram Ads",
-        "Campaign Optimization",
-        "Conversion Tracking"
+        "Meta & Google Ads",
+        "SEO Foundation",
+        "Conversion Tracking",
+        "Landing Page CRO"
       ],
       startingPrice: "$399/month"
     },
     {
+      id: "branding",
+      title: "Branding & Creative Designs",
+      description: "Build a distinct brand and ship high-performing creatives across channels.",
+      icon: Palette,
+      color: "bg-pink-100 text-pink-600",
+      features: [
+        "Logo & Guidelines",
+        "Campaign Creatives",
+        "Social Templates",
+        "Presentation Design"
+      ],
+      startingPrice: "Custom"
+    },
+    {
       id: "web-design",
-      title: "Web Design & Development",
-      description: "Create stunning, responsive websites that convert visitors into customers.",
+      title: "Web Development",
+      description: "Fast, responsive websites engineered to convert and scale.",
       icon: Globe,
       color: "bg-orange-100 text-orange-600",
       features: [
-        "Responsive Web Design",
-        "E-commerce Development",
+        "Custom Builds",
+        "E-commerce",
         "Performance Optimization",
-        "Mobile-First Approach"
+        "SEO-friendly Structure"
       ],
       startingPrice: "$1,999 one-time"
-    },
-    {
-      id: "content-marketing",
-      title: "Content Marketing", 
-      description: "Tell your brand story with compelling content that engages and converts.",
-      icon: PenTool,
-      color: "bg-pink-100 text-pink-600",
-      features: [
-        "Content Strategy Development",
-        "Blog Writing & Management",
-        "Video Content Creation",
-        "Email Marketing Campaigns"
-      ],
-      startingPrice: "$249/month"
     }
   ];
 
@@ -84,21 +86,37 @@ const Services = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="hero-gradient section-padding">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="hero-text text-4xl md:text-6xl mb-6">
-              Our <span className="text-white">Services</span>
-            </h1>
-            <p className="text-white/90 text-lg md:text-xl leading-relaxed">
-              Comprehensive digital marketing solutions designed to help your business 
-              grow and succeed in today's competitive landscape.
-            </p>
-            <div className="mt-8 flex justify-center">
-              <img
-                src={teamPhoto}
-                alt="Our team working on services"
-                className="w-full max-w-3xl rounded-2xl shadow-2xl border-4 border-primary/60 object-cover"
-              />
+        <section className="hero-gradient flex items-center justify-center relative">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-6 md:pt-24 pb-20 relative z-10">
+            {/* Main Heading */}
+            <div className="mb-6">
+              <h1 className="hero-title text-4xl md:text-6xl mb-4">
+                Our <span className="text-white">Services</span>
+              </h1>
+              <p className="hero-subtitle mb-6">
+                Comprehensive digital marketing solutions designed to help your business 
+                grow and succeed in today's competitive landscape. From social media management 
+                to performance marketing, we deliver results that drive sustainable growth.
+              </p>
+            </div>
+
+            {/* CTA Button with Icons (left and right of button) */}
+            <div className="mb-12 flex items-center justify-center gap-4">
+              <Star className="h-6 w-6 text-primary" />
+              <a href="/contact">
+                <Button size="lg" className="hero-cta text-sm md:text-base">
+                  Let's Elevate Together →
+                </Button>
+              </a>
+              <Zap className="h-7 w-7 text-primary" />
+            </div>
+
+            {/* Framed media matching the design */}
+            <div className="hero-media-wrap">
+              <div className="hero-media-frame">
+                <img src={heroImg} alt="Homepage showcase" className="w-full h-auto" />
+              </div>
+              <div className="hero-media-shadow" />
             </div>
           </div>
         </section>
@@ -111,14 +129,10 @@ const Services = () => {
                 const IconComponent = service.icon;
                 
                 return (
-                  <div key={service.id} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div key={service.id} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 neon-card">
                     <div className="flex items-start justify-between mb-6">
-                      <div className={`w-16 h-16 ${service.color} rounded-xl flex items-center justify-center`}>
+                      <div className={`w-16 h-16 ${service.color} rounded-xl flex items-center justify-center neon-icon`}>
                         <IconComponent className="h-8 w-8" />
-                      </div>
-                      <div className="text-right">
-                        <div className="text-sm text-gray-500">Starting at</div>
-                        <div className="text-lg font-bold text-primary">{service.startingPrice}</div>
                       </div>
                     </div>
                     
@@ -185,24 +199,6 @@ const Services = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="hero-gradient flat-panels section-padding">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="hero-text text-3xl md:text-4xl mb-6">
-              Ready to Get Started?
-            </h2>
-            <p className="text-white/90 text-lg mb-8">
-              Contact us today for a free consultation and discover how we can help grow your business.
-            </p>
-            <Link to="/contact">
-              <button className="btn-gradient">
-                Get Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
-            </Link>
           </div>
         </section>
       </main>

@@ -15,11 +15,11 @@ const Header = () => {
       href: "/services", 
       hasDropdown: true,
       items: [
-        { name: "SEO Optimization", href: "/services/seo" },
-        { name: "Social Media Marketing", href: "/services/social-media" },
-        { name: "PPC Advertising", href: "/services/ppc" },
-        { name: "Web Design & Development", href: "/services/web-design" },
-        { name: "Content Marketing", href: "/services/content-marketing" },
+        { name: "Social Media Content & Handling", href: "/services/social-media" },
+        { name: "Leads Generation & Management", href: "/services/leads" },
+        { name: "Performance Marketing", href: "/services/performance" },
+        { name: "Branding & Creative Designs", href: "/services/branding" },
+        { name: "Web Development", href: "/services/web-design" },
       ]
     },
     { name: "About Us", href: "/about" },
@@ -97,56 +97,56 @@ const Header = () => {
 
           {/* Mobile Menu Button (right aligned on mobile) */}
           <button
-            className={`md:hidden p-2 ${iconColor} ml-auto`}
+            className={`md:hidden mobile-menu-btn ${iconColor} ml-auto`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle mobile menu"
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-6 w-6 hamburger-icon open" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-6 w-6 hamburger-icon" />
             )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
-            <nav className="px-4 py-4 space-y-1">
+          <div className="md:hidden mobile-menu">
+            <nav className="space-y-2">
               {navigation.map((item) => (
                 <div key={item.name}>
-                  <Link
-                    to={item.href}
-                    className="block px-2 py-3 rounded-md text-[#373643] hover:bg-gray-50"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
+                  <div className="mobile-nav-item">
+                    <Link
+                      to={item.href}
+                      className="block w-full text-left"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  </div>
                   {item.hasDropdown && item.items && (
-                    <ul className="pl-4">
+                    <div className="mobile-submenu">
                       {item.items.map((sub) => (
-                        <li key={sub.name}>
+                        <div key={sub.name} className="mobile-submenu-item">
                           <Link
                             to={sub.href}
-                            className="block px-2 py-2 rounded-md text-[#373643]/90 hover:bg-gray-50 text-sm"
+                            className="block w-full text-left"
                             onClick={() => setIsMenuOpen(false)}
                           >
                             {sub.name}
                           </Link>
-                        </li>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   )}
                 </div>
               ))}
             </nav>
-            <div className="px-4 pb-4">
+            <div className="mobile-cta">
               <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-                <Button
-                  size="sm"
-                  className="bg-gradient-to-r from-primary-light to-primary text-white hover:opacity-90 rounded-full px-6 w-full"
-                >
+                <button>
                   Let's talk →
-                </Button>
+                </button>
               </Link>
             </div>
           </div>

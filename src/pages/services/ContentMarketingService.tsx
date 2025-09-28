@@ -88,13 +88,13 @@ const ContentMarketingService = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="hero-gradient section-padding">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="hero-gradient flex items-center justify-center relative">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-6 md:pt-24 pb-20 relative z-10">
             <div className="bg-white/10 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <PenTool className="h-10 w-10 text-white" />
             </div>
             <h1 className="hero-text text-4xl md:text-6xl mb-6">
-              Content <span className="text-yellow-300">Marketing</span>
+              Content <span className="text-white">Marketing</span>
             </h1>
             <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
               Tell your brand story with compelling content that engages your audience, 
@@ -106,6 +106,21 @@ const ContentMarketingService = () => {
                 <img src={contentImg} alt="Content marketing" className="w-full h-auto" />
               </div>
               <div className="hero-media-shadow" />
+            </div>
+          </div>
+        </section>
+
+        {/* Experts Ready To Answer */}
+        <section className="section-padding bg-white">
+          <div className="max-w-4xl mx-auto">
+            <div className="expert-cta rounded-2xl p-8 md:p-10 text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Experts Ready To Answer</h3>
+              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                We understand you may have questions. Our team of specialists is ready to provide clear and informative answers to all your inquiries.
+              </p>
+              <Link to="/contact">
+                <Button className="btn-gradient border-0 px-8 py-6 rounded-full font-semibold">Contact Us</Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -235,77 +250,27 @@ const ContentMarketingService = () => {
           </div>
         </section>
 
-        {/* Pricing */}
-        <section className="section-padding bg-gray-50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Content Marketing <span className="text-primary">Packages</span>
-              </h2>
-              <p className="text-lg text-gray-600">
-                Comprehensive content solutions that scale with your business needs.
-              </p>
-            </div>
+        
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {packages.map((pkg, index) => (
-                <div 
-                  key={index} 
-                  className={`bg-white p-8 rounded-2xl shadow-lg relative border-2 ${
-                    pkg.popular ? 'border-primary' : 'border-gray-100'
-                  }`}
-                >
-                  {pkg.popular && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-medium">
-                      Most Popular
-                    </div>
-                  )}
-                  
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
-                    <div className="text-3xl font-bold text-primary">{pkg.price}</div>
-                  </div>
-                  
-                  <div className="space-y-4 mb-8">
-                    {pkg.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center">
-                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700 text-sm">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <Button className={`w-full ${pkg.popular ? 'btn-gradient border-0' : ''}`}>
-                    Get Started
-                  </Button>
-                </div>
+        {/* FAQ Section */}
+        <section className="section-padding bg-white">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Content Marketing FAQ</h2>
+            </div>
+            <div className="space-y-4">
+              {[
+                { q: "What content do you produce?", a: "Blogs, social content, emails, video scripts, infographics, and whitepapers based on your strategy." },
+                { q: "Do you handle the entire content process?", a: "Yes. Strategy, calendar, creation, editing, publishing, and performance analysis." },
+                { q: "How do you measure content success?", a: "We track impressions, engagement, time on page, organic rankings, and conversion actions." },
+                { q: "Can you optimize existing content?", a: "We audit and refresh existing pages to improve topical depth, internal linking, and conversions." }
+              ].map((item, i) => (
+                <details key={i} className="bg-gray-50 rounded-xl p-5">
+                  <summary className="font-semibold text-gray-900 cursor-pointer">{item.q}</summary>
+                  <p className="mt-2 text-gray-600">{item.a}</p>
+                </details>
               ))}
             </div>
-
-            <div className="text-center mt-12 p-6 bg-white rounded-xl border-2 border-gray-100">
-              <p className="text-gray-600">
-                <strong>Custom Content Solutions:</strong> Need specific content types or higher volume? 
-                We create custom packages tailored to your unique requirements.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="hero-gradient flat-panels section-padding">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="hero-text text-3xl md:text-4xl mb-6">
-              Ready to Tell Your Story?
-            </h2>
-            <p className="text-white/90 text-lg mb-8">
-              Let's create a content marketing strategy that builds your brand and drives real business results.
-            </p>
-            <Link to="/contact">
-              <Button className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-4 rounded-full shadow-lg">
-                Start Your Content Journey
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
           </div>
         </section>
       </main>

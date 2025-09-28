@@ -91,8 +91,8 @@ const PPCService = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="hero-gradient section-padding">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="hero-gradient flex items-center justify-center relative">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-6 md:pt-24 pb-20 relative z-10">
             <div className="bg-white/10 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <MousePointer className="h-10 w-10 text-white" />
             </div>
@@ -109,6 +109,22 @@ const PPCService = () => {
                 <img src={ppcImg} alt="PPC advertising" className="w-full h-auto" />
               </div>
               <div className="hero-media-shadow" />
+            </div>
+          </div>
+        </section>
+
+        {/* Experts Ready To Answer */}
+        <section className="section-padding bg-white">
+          <div className="max-w-4xl mx-auto">
+            <div className="expert-cta rounded-2xl p-8 md:p-10 text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Experts Ready To Answer</h3>
+              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                We understand you may have questions. Our team of specialists is ready to provide clear and
+                informative answers to all your inquiries.
+              </p>
+              <Link to="/contact">
+                <Button className="btn-gradient border-0 px-8 py-6 rounded-full font-semibold">Contact Us</Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -218,80 +234,27 @@ const PPCService = () => {
           </div>
         </section>
 
-        {/* Pricing */}
-        <section className="section-padding bg-white">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                PPC Management <span className="text-primary">Packages</span>
-              </h2>
-              <p className="text-lg text-gray-600">
-                Professional PPC management that scales with your advertising budget.
-              </p>
-            </div>
+        
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {packages.map((pkg, index) => (
-                <div 
-                  key={index} 
-                  className={`bg-white p-8 rounded-2xl shadow-lg relative border-2 ${
-                    pkg.popular ? 'border-primary' : 'border-gray-100'
-                  }`}
-                >
-                  {pkg.popular && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-medium">
-                      Most Popular
-                    </div>
-                  )}
-                  
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
-                    <div className="text-3xl font-bold text-primary mb-2">{pkg.price}</div>
-                    <div className="text-gray-600 text-sm">+ {pkg.adSpend} ad spend</div>
-                  </div>
-                  
-                  <div className="space-y-4 mb-8">
-                    {pkg.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center">
-                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700 text-sm">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <Link to="/contact">
-                    <Button className={`w-full ${pkg.popular ? 'btn-gradient border-0' : ''}`}>
-                      Get Started
-                    </Button>
-                  </Link>
-                </div>
+        {/* FAQ Section */}
+        <section className="section-padding bg-white">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">PPC & Ads FAQ</h2>
+            </div>
+            <div className="space-y-4">
+              {[
+                { q: "What platforms do you manage?", a: "Google Ads, Meta (Facebook/Instagram), LinkedIn, YouTube, and Microsoft Ads depending on fit." },
+                { q: "How do you optimize campaigns?", a: "We improve targeting, bids, negatives, creatives, and landing pages—guided by conversion tracking." },
+                { q: "Do you set up tracking?", a: "Yes. We implement conversion tracking, pixels, server events, and dashboards for ROAS/CAC visibility." },
+                { q: "What results timeline should we expect?", a: "Initial learnings in 2–3 weeks, compounding efficiency by 6–10 weeks given enough spend and data." }
+              ].map((item, i) => (
+                <details key={i} className="bg-gray-50 rounded-xl p-5 neon-card">
+                  <summary className="font-semibold text-gray-900 cursor-pointer">{item.q}</summary>
+                  <p className="mt-2 text-gray-600">{item.a}</p>
+                </details>
               ))}
             </div>
-
-            <div className="text-center mt-12 p-6 bg-gray-50 rounded-xl">
-              <p className="text-gray-600">
-                <strong>Note:</strong> Management fees are separate from your advertising spend. 
-                We recommend a minimum ad spend of $1,000/month for optimal results.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="hero-gradient flat-panels section-padding">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="hero-text text-3xl md:text-4xl mb-6">
-              Ready to Accelerate Your Growth?
-            </h2>
-            <p className="text-white/90 text-lg mb-8">
-              Get a free PPC audit and discover how we can improve your advertising performance.
-            </p>
-            <Link to="/contact">
-              <Button className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-4 rounded-full shadow-lg">
-                Get Free PPC Audit
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
           </div>
         </section>
       </main>

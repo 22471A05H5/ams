@@ -1,8 +1,10 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-import { CheckCircle, Users, Award, Target, Heart, Lightbulb } from "lucide-react";
+import { CheckCircle, Users, Award, Target, Heart, Lightbulb, Star, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import teamPhoto from "@/assets/team-photo.jpg";
+import heroImg from "@/assets/1.webp";
 
 const About = () => {
   const values = [
@@ -31,8 +33,7 @@ const About = () => {
   const achievements = [
     { number: "500+", label: "Happy Clients" },
     { number: "1000+", label: "Projects Completed" },
-    { number: "95%", label: "Client Retention Rate" },
-    { number: "5+", label: "Years Experience" }
+    { number: "95%", label: "Client Retention Rate" }
   ];
 
   return (
@@ -41,22 +42,35 @@ const About = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="hero-gradient section-padding">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="hero-text text-4xl md:text-6xl mb-6">
-              About <span className="text-white">AMS ElevateX</span>
-            </h1>
-            <p className="text-white/90 text-lg md:text-xl leading-relaxed">
-              We are a passionate team of digital marketing experts dedicated to helping 
-              businesses thrive in the digital age with innovative solutions and proven strategies.
-            </p>
-            {/* Single centered image (team photo) */}
-            <div className="mt-8 flex justify-center">
-              <img
-                src={teamPhoto}
-                alt="Our Team"
-                className="w-full max-w-3xl rounded-2xl shadow-2xl border-4 border-primary/60 object-cover"
-              />
+        <section className="hero-gradient flex items-center justify-center relative">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-6 md:pt-24 pb-20 relative z-10">
+            {/* Main Heading */}
+            <div className="mb-6">
+              <h1 className="hero-title text-4xl md:text-6xl mb-4">
+                About <span className="text-white">AMS ElevateX</span>
+              </h1>
+              <p className="hero-subtitle mb-6">
+                Leading Digital Marketing Agency in India. Building meaningful partnerships & crafting impactful experiences for clients since 2025. We specialize in helping startups and SMEs scale through data-driven marketing strategies.
+              </p>
+            </div>
+
+            {/* CTA Button with Icons (left and right of button) */}
+            <div className="mb-12 flex items-center justify-center gap-4">
+              <Star className="h-6 w-6 text-primary" />
+              <a href="/contact">
+                <Button size="lg" className="hero-cta text-sm md:text-base">
+                  Let's Elevate Together →
+                </Button>
+              </a>
+              <Zap className="h-7 w-7 text-primary" />
+            </div>
+
+            {/* Framed media matching the design */}
+            <div className="hero-media-wrap">
+              <div className="hero-media-frame">
+                <img src={heroImg} alt="Homepage showcase" className="w-full h-auto" />
+              </div>
+              <div className="hero-media-shadow" />
             </div>
           </div>
         </section>
@@ -64,20 +78,21 @@ const About = () => {
         {/* Our Story */}
         <section className="section-padding bg-white">
           <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Our <span className="text-primary">Mission & Vision</span>
+              </h2>
+            </div>
             <div className="grid grid-cols-1 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Our Journey & <span className="text-primary">Vision</span>
-                </h2>
                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  Founded in 2019, AMS ElevateX began with a simple mission: to help businesses 
-                  navigate the complex digital landscape and achieve unprecedented growth through 
-                  innovative marketing strategies.
+                  <strong>Our Mission:</strong> To work closely with client teams by understanding their current business and marketing challenges. AMS ElevateX develops efficient and creative marketing strategies aligned with current trends to help businesses dominate competitive market spaces through strategic marketing efforts.
+                </p>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  <strong>Our Vision:</strong> To become India's most trusted digital growth partner for startups and SMEs, using advanced analytics to understand audiences, creating innovative campaigns that stand out, and leveraging the latest marketing technology to connect businesses with their ideal customers.
                 </p>
                 <p className="text-gray-600 mb-8 leading-relaxed">
-                  Over the years, we've evolved from a small startup to a trusted digital 
-                  marketing partner for businesses worldwide. Our team combines creativity with 
-                  data-driven insights to deliver results that matter.
+                  We are experts in using data, creativity, and technology to help startups thrive by finding their audience and standing out from the competition. Our goal is to build meaningful partnerships that drive sustainable growth and create impactful digital experiences.
                 </p>
                 
                 <div className="space-y-3">
@@ -105,7 +120,7 @@ const About = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Our <span className="text-primary">Values</span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 The principles that guide our work and define our commitment to excellence.
               </p>
             </div>
@@ -131,19 +146,54 @@ const About = () => {
           </div>
         </section>
 
-        {/* Achievements */}
+        {/* Our Growth Journey Timeline */}
         <section className="section-padding bg-white">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Our <span className="text-primary">Achievements</span>
+                Our Growth <span className="text-primary">Journey Timeline</span>
               </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">Key milestones in our evolution as a leading digital marketing agency</p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="space-y-8">
+              {[
+                { date: "January 2025", title: "Foundation & Vision", desc: "Launched AMS ElevateX with a mission to revolutionize digital marketing for startups and SMEs, establishing our core team and service framework." },
+                { date: "June 2025", title: "Service Portfolio Expansion", desc: "Launched comprehensive service offerings including social media management, lead generation, performance marketing, branding, and web development." },
+                { date: "September 2025", title: "Technology & Analytics Integration", desc: "Implemented advanced analytics dashboard and automation tools, enabling real-time campaign optimization and transparent client reporting." },
+                { date: "December 2025", title: "Team Growth & Specialization", desc: "Expanded to a team of 15+ specialists across different verticals, establishing dedicated pods for social media, ads, SEO, and creative design." }
+              ].map((milestone, index) => (
+                <div key={index} className="flex items-start space-x-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-4 h-4 bg-primary rounded-full mt-2"></div>
+                  </div>
+                  <div className="flex-grow">
+                    <div className="text-sm font-semibold text-primary mb-1">{milestone.date}</div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{milestone.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{milestone.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Achievements */}
+        <section className="section-padding bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Our <span className="text-primary">Impact</span>
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Measurable results that showcase our commitment to client success.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {achievements.map((achievement, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                <div key={index} className="text-center bg-white p-8 rounded-2xl shadow-lg neon-card counter-card">
+                  <div className="text-4xl md:text-5xl font-bold text-primary mb-2 counter-number">
                     {achievement.number}
                   </div>
                   <div className="text-gray-600 font-medium">
@@ -155,22 +205,7 @@ const About = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="hero-gradient flat-panels section-padding">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="hero-text text-3xl md:text-4xl mb-6">
-              Ready to Work With Us?
-            </h2>
-            <p className="text-white/90 text-lg mb-8">
-              Let's discuss how we can help grow your business with our proven digital marketing strategies.
-            </p>
-            <Link to="/contact">
-              <button className="btn-gradient">
-                Get In Touch
-              </button>
-            </Link>
-          </div>
-        </section>
+        
       </main>
 
       <Footer />

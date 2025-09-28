@@ -13,26 +13,26 @@ const HeroSection = () => {
 
   return (
     <section className="hero-gradient flex items-center justify-center relative">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24 relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-6 md:pt-24 pb-20 relative z-10">
         {/* Main Heading */}
         <div className="mb-6">
           <h1 className="hero-title text-4xl md:text-6xl mb-4">
-            <span className="text-white/90">›</span> Innovating Your
-            <br />
-            Digital World With Us
+            AMS ElevateX — <span className="text-white">Digital Growth Partner</span>
           </h1>
           <p className="hero-subtitle mb-6">
-            Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum
-            Has Been The Industry's Standard Dummy Text Ever Since The 1500s.
+            We help businesses scale with Social Media, Lead Systems, Performance Marketing, Branding,
+            and Web Development — turning traffic into revenue with reliable, data-driven execution.
           </p>
         </div>
 
         {/* CTA Button with Icons (left and right of button) */}
         <div className="mb-12 flex items-center justify-center gap-4">
           <Star className="h-6 w-6 text-primary" />
-          <Button size="lg" className="hero-cta text-sm md:text-base">
-            Get Started →
-          </Button>
+          <a href="/contact">
+            <Button size="lg" className="hero-cta text-sm md:text-base">
+              Let's Elevate Together →
+            </Button>
+          </a>
           <Zap className="h-7 w-7 text-primary" />
         </div>
 
@@ -43,25 +43,6 @@ const HeroSection = () => {
           </div>
           <div className="hero-media-shadow" />
         </div>
-      </div>
-      {/* Floating Contact Actions (persistent on home) */}
-      <div className="fixed bottom-4 left-4 z-50">
-        <button
-          onClick={handleWhatsApp}
-          aria-label="Chat on WhatsApp"
-          className="h-12 w-12 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg flex items-center justify-center"
-        >
-          <MessageCircle className="h-6 w-6" />
-        </button>
-      </div>
-      <div className="fixed bottom-4 right-4 z-50">
-        <button
-          onClick={handleCall}
-          aria-label="Call us"
-          className="h-12 w-12 rounded-full bg-primary hover:opacity-90 text-white shadow-lg flex items-center justify-center"
-        >
-          <Phone className="h-6 w-6" />
-        </button>
       </div>
     </section>
   );

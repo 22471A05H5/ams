@@ -6,14 +6,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
-import Contact from "./pages/Contact";
-import SEOService from "./pages/services/SEOService";
+import Contact from "./pages/ContactNew";
 import SocialMediaService from "./pages/services/SocialMediaService";
-import PPCService from "./pages/services/PPCService";
-import WebDesignService from "./pages/services/WebDesignService";
-import ContentMarketingService from "./pages/services/ContentMarketingService";
 import NotFound from "./pages/NotFound";
 import FloatingContactButtons from "./components/FloatingContactButtons";
+import ScrollToTop from "./components/ScrollToTop";
+import LeadsService from "./pages/services/LeadsService";
+import PerformanceMarketingService from "./pages/services/PerformanceMarketingService";
+import BrandingService from "./pages/services/BrandingService";
+import WebDesignService from "./pages/services/WebDesignService";
 
 const queryClient = new QueryClient();
 
@@ -25,15 +26,17 @@ const App = () => (
       <BrowserRouter>
         {/* Global floating contact actions */}
         <FloatingContactButtons />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/services/seo" element={<SEOService />} />
+          {/* Main five services */}
           <Route path="/services/social-media" element={<SocialMediaService />} />
-          <Route path="/services/ppc" element={<PPCService />} />
+          <Route path="/services/leads" element={<LeadsService />} />
+          <Route path="/services/performance" element={<PerformanceMarketingService />} />
+          <Route path="/services/branding" element={<BrandingService />} />
           <Route path="/services/web-design" element={<WebDesignService />} />
-          <Route path="/services/content-marketing" element={<ContentMarketingService />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

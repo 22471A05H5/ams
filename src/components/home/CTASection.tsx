@@ -8,7 +8,7 @@ const CTASection = () => {
   };
 
   return (
-    <section className="hero-gradient flat-panels pt-16 pb-0">
+    <section className="hero-gradient flat-panels tight-panels pt-12 pb-0 mb-4">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="hero-text text-3xl md:text-4xl mb-6">
           Ready To Grow Your Business?{" "}
@@ -26,7 +26,7 @@ const CTASection = () => {
               size="lg" 
               className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-4 rounded-full shadow-lg"
             >
-              Get Free Consultation
+              Start Your Growth Journey
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>

@@ -1,42 +1,42 @@
 import { Link } from "react-router-dom";
-import { Search, Share2, MousePointer, Globe, PenTool, ArrowRight } from "lucide-react";
+import { Share2, Users, Target, Globe, Palette, ArrowRight } from "lucide-react";
 
 const ServicesSection = () => {
   const services = [
     {
-      id: "seo",
-      title: "SEO Optimization",
-      description: "Boost your search rankings and organic traffic with our proven SEO strategies and techniques.",
-      icon: Search,
-      color: "bg-blue-100 text-blue-600"
-    },
-    {
       id: "social-media",
-      title: "Social Media Marketing", 
-      description: "Engage your audience and build brand awareness across all major social media platforms.",
+      title: "Social Media Content Creation & Handling",
+      description: "Plan, create, and manage daily content that grows your audience and engagement.",
       icon: Share2,
       color: "bg-green-100 text-green-600"
     },
     {
-      id: "ppc",
-      title: "PPC Advertising",
-      description: "Drive targeted traffic and maximize ROI with expertly managed pay-per-click campaigns.",
-      icon: MousePointer,
+      id: "leads",
+      title: "Leads Generation & Management",
+      description: "Capture, qualify, and route leads to booked calls with smart automations.",
+      icon: Users,
+      color: "bg-blue-100 text-blue-600"
+    },
+    {
+      id: "performance",
+      title: "Performance Marketing (Meta Ads, Google Ads & SEO)",
+      description: "Unified paid + organic system that scales profitably with data.",
+      icon: Target,
       color: "bg-purple-100 text-purple-600"
     },
     {
-      id: "web-design",
-      title: "Web Design & Development",
-      description: "Create stunning, responsive websites that convert visitors into customers.",
-      icon: Globe,
-      color: "bg-orange-100 text-orange-600"
+      id: "branding",
+      title: "Branding & Creative Designs",
+      description: "Build a distinct brand and ship scroll-stopping creatives that convert.",
+      icon: Palette,
+      color: "bg-pink-100 text-pink-600"
     },
     {
-      id: "content-marketing",
-      title: "Content Marketing",
-      description: "Tell your brand story with compelling content that engages and converts your audience.",
-      icon: PenTool,
-      color: "bg-pink-100 text-pink-600"
+      id: "web-design",
+      title: "Web Development",
+      description: "Fast, responsive websites engineered to convert and scale.",
+      icon: Globe,
+      color: "bg-orange-100 text-orange-600"
     }
   ];
 
@@ -45,12 +45,10 @@ const ServicesSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            We Offer A Wide Range Of{" "}
-            <span className="text-primary">Design Services</span>
+            Services <span className="text-primary">We Provide</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Our comprehensive digital marketing solutions are designed to help your business 
-            grow and succeed in the digital landscape.
+            Full-funnel solutions designed for consistent growth.
           </p>
         </div>
 
@@ -62,9 +60,9 @@ const ServicesSection = () => {
               <Link
                 key={service.id}
                 to={`/services/${service.id}`}
-                className="service-card group cursor-pointer"
+                className="service-card group cursor-pointer bg-white p-6 rounded-2xl shadow-lg neon-card"
               >
-                <div className={`w-16 h-16 ${service.color} rounded-xl flex items-center justify-center mb-6`}>
+                <div className={`w-16 h-16 ${service.color} rounded-xl flex items-center justify-center mb-6 neon-icon`}>
                   <IconComponent className="h-8 w-8" />
                 </div>
                 
