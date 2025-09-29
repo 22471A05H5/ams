@@ -20,11 +20,11 @@ const CTASection = () => {
           Join hundreds of successful businesses who trust us with their growth.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <Link to="/contact">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 w-full max-w-lg mx-auto sm:max-w-none">
+          <Link to="/contact" className="w-full sm:w-auto">
             <Button 
               size="lg" 
-              className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-4 rounded-full shadow-lg"
+              className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-4 rounded-full shadow-lg w-full sm:w-auto"
             >
               Start Your Growth Journey
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -35,7 +35,7 @@ const CTASection = () => {
             variant="outline" 
             size="lg"
             onClick={handleWhatsApp}
-            className="bg-white text-gray-800 border-white hover:bg-gray-100 font-semibold px-8 py-4 rounded-full shadow-lg"
+            className="bg-white text-gray-800 border-white hover:bg-gray-100 font-semibold px-8 py-4 rounded-full shadow-lg w-full sm:w-auto"
           >
             <MessageCircle className="mr-2 h-5 w-5 text-green-600" />
             Chat on WhatsApp
