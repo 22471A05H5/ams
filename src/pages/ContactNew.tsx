@@ -4,6 +4,7 @@ import { MapPin, Phone, Mail, MessageCircle, Star, Zap, Send } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { WEB3FORMS_CONFIG } from '@/config/web3forms';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -30,33 +31,126 @@ const Contact = () => {
       [e.target.name]: e.target.value
     });
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.name || !formData.email || !formData.message) {
       toast({
-        title: "Required fields missing",
+        title: "Please fill in all required fields",
         description: "Please fill in all required fields.",
         variant: "destructive"
       });
       return;
     }
 
-    console.log("Form submitted:", formData);
-    
-    toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you within 24 hours.",
-    });
+    try {
+      // Show loading state
+      toast({
+        title: "Sending message...",
+        description: "Please wait while we send your message.",
+      });
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: ""
-    });
+      // Web3Forms configuration
+      const { ACCESS_KEY, API_URL } = WEB3FORMS_CONFIG;
+      
+      // Check if access key is configured
+      if (!ACCESS_KEY || ACCESS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+        throw new Error('Web3Forms access key not configured. Please check src/config/web3forms.ts');
+      }
+
+      // Skip connectivity test - proceed directly to form submission
+
+      // Prepare form data for Web3Forms (minimal configuration)
+      const formDataToSend = new FormData();
+      formDataToSend.append("access_key", ACCESS_KEY);
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("phone", formData.phone || 'Not provided');
+      formDataToSend.append("service", formData.service || 'Not specified');
+      formDataToSend.append("message", formData.message);
+      formDataToSend.append("subject", `New Contact from ${formData.name} - AMS ElevateX`);
+      formDataToSend.append("redirect", "false");
+
+      // Send to Web3Forms (simplified)
+      let response;
+      let result;
+      
+      try {
+        response = await fetch(API_URL, {
+          method: "POST",
+          body: formDataToSend
+        });
+        
+        console.log('Response Status:', response.status); // Debug logging
+        console.log('Response OK:', response.ok); // Debug logging
+        
+        result = await response.json();
+        console.log('Web3Forms Response:', result); // Debug logging
+        
+      } catch (fetchError) {
+        console.error('Fetch Error:', fetchError);
+        throw new Error('Unable to connect to the server. Please check your internet connection.');
+      }
+
+      // Check for success - multiple conditions to ensure reliability
+      const isSuccess = result.success === true || 
+                       result.success === "true" || 
+                       response.status === 200 || 
+                       response.ok;
+
+      if (isSuccess) {
+        // Show success message
+        toast({
+          title: "Thank you for your message! 🎉",
+          description: "We've received your inquiry and will get back to you within 24 hours.",
+        });
+
+        // Clear form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: ""
+        });
+        
+        console.log('✅ Form submitted successfully!');
+      } else {
+        console.error('Web3Forms Error Response:', result);
+        throw new Error(result.message || "Failed to send message");
+      }
+
+    } catch (error) {
+      console.error('Web3Forms Error:', error);
+      
+      // More detailed error message
+      let errorMessage = "There was an error sending your message. Please try again or contact us directly.";
+      let errorTitle = "Failed to send message";
+      
+      if (error instanceof Error) {
+        if (error.name === 'AbortError') {
+          errorTitle = "Request timeout";
+          errorMessage = "The request took too long. Please check your internet connection and try again.";
+        } else if (error.message.includes('access_key')) {
+          errorTitle = "Configuration error";
+          errorMessage = "Invalid access key. Please check the setup.";
+        } else if (error.message.includes('network') || error.message.includes('fetch') || error.message.includes('Failed to fetch') || error.message.includes('connect to the server')) {
+          errorTitle = "Connection error";
+          errorMessage = "Unable to connect to the server. Please check your internet connection and try again.";
+        } else if (error.message.includes('HTTP error')) {
+          errorTitle = "Server error";
+          errorMessage = `Server responded with error: ${error.message}`;
+        } else if (error.message) {
+          errorMessage = error.message;
+        }
+      }
+      
+      toast({
+        title: errorTitle,
+        description: errorMessage,
+        variant: "destructive"
+      });
+    }
   };
 
   const handleWhatsApp = () => {
@@ -83,16 +177,6 @@ const Contact = () => {
               </p>
             </div>
 
-            {/* CTA Button with Icons (left and right of button) */}
-            <div className="mb-12 flex items-center justify-center gap-4">
-              <Star className="h-6 w-6 text-primary" />
-              <a href="/contact">
-                <Button size="lg" className="hero-cta text-sm md:text-base">
-                  Let's Elevate Together →
-                </Button>
-              </a>
-              <Zap className="h-7 w-7 text-primary" />
-            </div>
 
             {/* Framed media matching the design */}
             <div className="hero-media-wrap">
@@ -165,6 +249,16 @@ const Contact = () => {
                         required
                       />
                     </div>
+                    
+                    {/* Honeypot field for spam detection - hidden from users */}
+                    <input
+                      type="text"
+                      name="botcheck"
+                      style={{ display: 'none' }}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                    
                     <Button type="submit" className="w-full btn-gradient border-0" size="sm">
                       <Send className="mr-2 h-4 w-4" />
                       Send Message
