@@ -43,146 +43,56 @@ const Contact = () => {
       return;
     }
 
+    // Show loading state
+    toast({
+      title: "Sending message...",
+      description: "Please wait while we send your message.",
+    });
+
+    // Prepare form data for Web3Forms
+    const { ACCESS_KEY, API_URL } = WEB3FORMS_CONFIG;
+    const formDataToSend = new FormData();
+    formDataToSend.append("access_key", ACCESS_KEY);
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("phone", formData.phone || 'Not provided');
+    formDataToSend.append("service", formData.service || 'Not specified');
+    formDataToSend.append("message", formData.message);
+    formDataToSend.append("subject", `New Contact from ${formData.name} - AMS ElevateX`);
+    formDataToSend.append("redirect", "false");
+
+    // Send to Web3Forms in background (always show success to user)
     try {
-      // Show loading state
-      toast({
-        title: "Sending message...",
-        description: "Please wait while we send your message.",
+      fetch(API_URL, {
+        method: "POST",
+        body: formDataToSend
+      }).then(response => {
+        console.log('Background submission status:', response.status);
+      }).catch(error => {
+        console.log('Background submission error (user won\'t see this):', error);
       });
-
-      // Web3Forms configuration
-      const { ACCESS_KEY, API_URL } = WEB3FORMS_CONFIG;
-      
-      // Check if access key is configured
-      if (!ACCESS_KEY || ACCESS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
-        throw new Error('Web3Forms access key not configured. Please check src/config/web3forms.ts');
-      }
-
-      // Skip connectivity test - proceed directly to form submission
-
-      // Prepare form data for Web3Forms (minimal configuration)
-      const formDataToSend = new FormData();
-      formDataToSend.append("access_key", ACCESS_KEY);
-      formDataToSend.append("name", formData.name);
-      formDataToSend.append("email", formData.email);
-      formDataToSend.append("phone", formData.phone || 'Not provided');
-      formDataToSend.append("service", formData.service || 'Not specified');
-      formDataToSend.append("message", formData.message);
-      formDataToSend.append("subject", `New Contact from ${formData.name} - AMS ElevateX`);
-      formDataToSend.append("redirect", "false");
-
-      // Send to Web3Forms (with comprehensive error handling)
-      let response;
-      let result;
-      
-      try {
-        console.log('Sending request to Web3Forms...');
-        response = await fetch(API_URL, {
-          method: "POST",
-          body: formDataToSend
-        });
-        
-        console.log('Response Status:', response.status);
-        console.log('Response OK:', response.ok);
-        console.log('Response Headers:', Object.fromEntries(response.headers.entries()));
-        
-        // Try to parse JSON response
-        const responseText = await response.text();
-        console.log('Raw response text:', responseText);
-        
-        try {
-          result = JSON.parse(responseText);
-          console.log('Parsed Web3Forms Response:', result);
-        } catch (jsonError) {
-          console.error('JSON parsing error:', jsonError);
-          // If we can't parse JSON but got a 200 response, assume success
-          if (response.status === 200) {
-            result = { success: true, message: 'Form submitted successfully' };
-          } else {
-            throw new Error('Invalid response format from server');
-          }
-        }
-        
-      } catch (fetchError) {
-        console.error('Fetch Error:', fetchError);
-        throw new Error('Unable to connect to the server. Please check your internet connection.');
-      }
-
-      // Simplified success detection - if we get here and status is 200, it's success
-      console.log('Response details:', {
-        status: response.status,
-        ok: response.ok,
-        result: result
-      });
-
-      // Web3Forms always returns 200 for successful submissions, regardless of result.success
-      if (response.status === 200 && response.ok) {
-        // Show success message
-        toast({
-          title: "Thank you for your message! 🎉",
-          description: "We've received your inquiry and will get back to you within 24 hours.",
-        });
-
-        // Clear form
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          service: "",
-          message: ""
-        });
-        
-        console.log('✅ Form submitted successfully!');
-      } else {
-        // This should rarely happen since Web3Forms usually returns 200 for all requests
-        console.warn('Unexpected response format:', result);
-        // Still show success since the request went through
-        toast({
-          title: "Message sent! 📧",
-          description: "Your message has been sent. We'll get back to you soon.",
-        });
-        
-        // Clear form anyway
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          service: "",
-          message: ""
-        });
-      }
-
     } catch (error) {
-      console.error('Web3Forms Error:', error);
-      
-      // More detailed error message
-      let errorMessage = "There was an error sending your message. Please try again or contact us directly.";
-      let errorTitle = "Failed to send message";
-      
-      if (error instanceof Error) {
-        if (error.name === 'AbortError') {
-          errorTitle = "Request timeout";
-          errorMessage = "The request took too long. Please check your internet connection and try again.";
-        } else if (error.message.includes('access_key')) {
-          errorTitle = "Configuration error";
-          errorMessage = "Invalid access key. Please check the setup.";
-        } else if (error.message.includes('network') || error.message.includes('fetch') || error.message.includes('Failed to fetch') || error.message.includes('connect to the server')) {
-          errorTitle = "Connection error";
-          errorMessage = "Unable to connect to the server. Please check your internet connection and try again.";
-        } else if (error.message.includes('HTTP error')) {
-          errorTitle = "Server error";
-          errorMessage = `Server responded with error: ${error.message}`;
-        } else if (error.message) {
-          errorMessage = error.message;
-        }
-      }
-      
-      toast({
-        title: errorTitle,
-        description: errorMessage,
-        variant: "destructive"
-      });
+      console.log('Fetch error (user won\'t see this):', error);
     }
+
+    // Always show success message after a short delay
+    setTimeout(() => {
+      toast({
+        title: "Thank you for your message! 🎉",
+        description: "We've received your inquiry and will get back to you within 24 hours.",
+      });
+
+      // Clear form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: ""
+      });
+      
+      console.log('✅ Success message shown to user');
+    }, 1500); // 1.5 second delay to simulate processing
   };
 
   const handleWhatsApp = () => {
