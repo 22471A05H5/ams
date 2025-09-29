@@ -31,8 +31,8 @@ const About = () => {
   ];
 
   const achievements = [
-    { number: "500+", label: "Happy Clients" },
-    { number: "1000+", label: "Projects Completed" },
+    { number: "100+", label: "Happy Clients" },
+    { number: "100+", label: "Projects Completed" },
     { number: "95%", label: "Client Retention Rate" }
   ];
 
@@ -91,7 +91,7 @@ const About = () => {
                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                   <strong>Our Vision:</strong> To become India's most trusted digital growth partner for startups and SMEs, using advanced analytics to understand audiences, creating innovative campaigns that stand out, and leveraging the latest marketing technology to connect businesses with their ideal customers.
                 </p>
-                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                <p className="text-gray-600 mb-8 leading-relaxed">
                   We are experts in using data, creativity, and technology to help startups thrive by finding their audience and standing out from the competition. Our goal is to build meaningful partnerships that drive sustainable growth and create impactful digital experiences.
                 </p>
                 

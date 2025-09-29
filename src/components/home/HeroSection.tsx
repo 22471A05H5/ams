@@ -13,7 +13,7 @@ const HeroSection = () => {
 
   return (
     <section className="hero-gradient flex items-center justify-center relative">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-6 md:pt-24 pb-20 relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-4 md:pt-24 pb-4 md:pb-20 relative z-10">
         {/* Main Heading */}
         <div className="mb-6">
           <h1 className="hero-title text-4xl md:text-6xl mb-4">

@@ -14,7 +14,7 @@ const AboutSection = () => {
   const stats = [
     { icon: Users, number: "100+", label: "Happy Clients" },
     { icon: Award, number: "100+", label: "Projects Completed" },
-    { icon: Target, number: "3+", label: "Years Experience" },
+    { icon: Target, number: "95%", label: "Success Rate" },
   ];
 
   return (
