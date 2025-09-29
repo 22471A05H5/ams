@@ -35,11 +35,11 @@ const Contact = () => {
     e.preventDefault();
     console.log('🚀 FORM SUBMIT v3.0 - CORS BYPASS VERSION');
     
-    // Only validate required fields
-    if (!formData.name || !formData.email || !formData.message) {
+    // Only validate required fields (name and email)
+    if (!formData.name || !formData.email) {
       toast({
         title: "Please fill in all required fields",
-        description: "Name, email, and message are required.",
+        description: "Name and email are required.",
         variant: "destructive"
       });
       return;
@@ -74,7 +74,7 @@ const Contact = () => {
       email: formData.email,
       phone: formData.phone || 'Not provided',
       service: formData.service || 'Not specified',
-      message: formData.message,
+      message: formData.message || 'No specific message provided',
       subject: `New Contact from ${formData.name} - AMS ElevateX`
       // No redirect field - keeps it silent
     };
@@ -149,8 +149,6 @@ const Contact = () => {
               <div className="hero-media-frame">
                 <div className="w-full h-auto bg-white p-4 md:p-6 flex flex-col justify-center min-h-[400px] md:min-h-[500px]">
                   <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 text-center">Send us a message</h3>
-                  {/* Debug indicator - remove after testing */}
-                  <div className="text-xs text-gray-500 text-center mb-2">Form v4.0 - Silent Submit</div>
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
@@ -206,7 +204,7 @@ const Contact = () => {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-700 mb-1">Message *</label>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Message</label>
                       <textarea
                         name="message"
                         value={formData.message}
@@ -214,7 +212,6 @@ const Contact = () => {
                         rows={3}
                         className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent resize-none"
                         placeholder="Tell us about your project and goals..."
-                        required
                       />
                     </div>
                     
