@@ -51,12 +51,20 @@ const Contact = () => {
       description: "Please wait while we send your message.",
     });
 
-    // Create a hidden form and submit it (bypasses CORS completely)
+    // Create a hidden iframe to submit form silently (no navigation)
     const { ACCESS_KEY, API_URL } = WEB3FORMS_CONFIG;
+    
+    // Create hidden iframe
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.name = 'hidden_iframe';
+    document.body.appendChild(iframe);
+
+    // Create form that targets the hidden iframe
     const form = document.createElement('form');
     form.method = 'POST';
     form.action = API_URL;
-    form.target = '_blank'; // Opens in new tab (user won't see it)
+    form.target = 'hidden_iframe'; // Submit to hidden iframe
     form.style.display = 'none';
 
     // Add form fields
@@ -67,8 +75,8 @@ const Contact = () => {
       phone: formData.phone || 'Not provided',
       service: formData.service || 'Not specified',
       message: formData.message,
-      subject: `New Contact from ${formData.name} - AMS ElevateX`,
-      redirect: 'https://web3forms.com/success' // Web3Forms success page
+      subject: `New Contact from ${formData.name} - AMS ElevateX`
+      // No redirect field - keeps it silent
     };
 
     Object.entries(fields).forEach(([key, value]) => {
@@ -79,12 +87,17 @@ const Contact = () => {
       form.appendChild(input);
     });
 
-    // Submit form in background
+    // Submit form to hidden iframe (completely invisible)
     document.body.appendChild(form);
     form.submit();
-    document.body.removeChild(form);
     
-    console.log('📧 Form submitted via hidden form (CORS bypass)');
+    // Clean up after a short delay
+    setTimeout(() => {
+      document.body.removeChild(form);
+      document.body.removeChild(iframe);
+    }, 2000);
+    
+    console.log('📧 Form submitted silently via hidden iframe');
 
     // ALWAYS show success after delay - NO EXCEPTIONS
     setTimeout(() => {
@@ -137,7 +150,7 @@ const Contact = () => {
                 <div className="w-full h-auto bg-white p-4 md:p-6 flex flex-col justify-center min-h-[400px] md:min-h-[500px]">
                   <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 text-center">Send us a message</h3>
                   {/* Debug indicator - remove after testing */}
-                  <div className="text-xs text-gray-500 text-center mb-2">Form v3.0 - CORS Bypass</div>
+                  <div className="text-xs text-gray-500 text-center mb-2">Form v4.0 - Silent Submit</div>
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
