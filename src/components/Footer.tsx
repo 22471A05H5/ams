@@ -130,10 +130,13 @@ const Footer = () => {
                 <Phone className="h-5 w-5 mr-3 text-primary flex-shrink-0" />
                 <span>+91 6281855705</span>
               </div>
-              <div className="flex items-center text-gray-400">
+              <a 
+                href="mailto:info@amselevatex.com"
+                className="flex items-center text-gray-400 hover:text-primary transition-colors"
+              >
                 <Mail className="h-5 w-5 mr-3 text-primary flex-shrink-0" />
                 <span>info@amselevatex.com</span>
-              </div>
+              </a>
               <button
                 onClick={handleWhatsApp}
                 className="flex items-center text-gray-400 hover:text-primary transition-colors"
