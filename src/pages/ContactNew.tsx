@@ -35,11 +35,11 @@ const Contact = () => {
     e.preventDefault();
     console.log('🚀 FORM SUBMIT v3.0 - CORS BYPASS VERSION');
     
-    // Only validate required fields (name and email)
-    if (!formData.name || !formData.email) {
+    // Validate all required fields (all except message)
+    if (!formData.name || !formData.email || !formData.phone || !formData.service) {
       toast({
         title: "Please fill in all required fields",
-        description: "Name and email are required.",
+        description: "Name, email, phone, and service selection are required.",
         variant: "destructive"
       });
       return;
@@ -72,8 +72,8 @@ const Contact = () => {
       access_key: ACCESS_KEY,
       name: formData.name,
       email: formData.email,
-      phone: formData.phone || 'Not provided',
-      service: formData.service || 'Not specified',
+      phone: formData.phone,
+      service: formData.service,
       message: formData.message || 'No specific message provided',
       subject: `New Contact from ${formData.name} - AMS ElevateX`
       // No redirect field - keeps it silent
@@ -178,7 +178,7 @@ const Contact = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-medium text-gray-700 mb-1">Phone Number</label>
+                        <label className="block text-xs font-medium text-gray-700 mb-1">Phone Number *</label>
                         <input
                           type="tel"
                           name="phone"
@@ -186,15 +186,17 @@ const Contact = () => {
                           onChange={handleInputChange}
                           className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent"
                           placeholder="+91 9999999999"
+                          required
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-gray-700 mb-1">Service Interest</label>
+                        <label className="block text-xs font-medium text-gray-700 mb-1">Service Interest *</label>
                         <select
                           name="service"
                           value={formData.service}
                           onChange={handleInputChange}
                           className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent"
+                          required
                         >
                           <option value="">Select a service</option>
                           {services.map((service, index) => (
