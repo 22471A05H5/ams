@@ -44,11 +44,11 @@ const capabilities = [
             {/* CTA Button with Icons (left and right of button) */}
             <div className="mb-12 flex items-center justify-center gap-4">
               <Star className="h-6 w-6 text-primary" />
-              <a href="/contact">
+              <Link to="/contact">
                 <Button size="lg" className="hero-cta text-sm md:text-base">
                   Let's Elevate Together →
                 </Button>
-              </a>
+              </Link>
               <Zap className="h-7 w-7 text-primary" />
             </div>
 
