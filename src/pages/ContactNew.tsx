@@ -61,7 +61,7 @@ const Contact = () => {
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent("Hi! I'm interested in your digital marketing services. Can we discuss?");
-    window.open(`https://wa.me/1234567890?text=${message}`, "_blank");
+    window.open(`https://wa.me/916281855705?text=${message}`, "_blank");
   };
 
   return (
@@ -135,7 +135,7 @@ const Contact = () => {
                           value={formData.phone}
                           onChange={handleInputChange}
                           className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent"
-                          placeholder="+1 (555) 123-4567"
+                          placeholder="+91 9999999999"
                         />
                       </div>
                       <div>
@@ -194,11 +194,11 @@ const Contact = () => {
                 <div className="space-y-4">
                   <div className="flex items-center">
                     <MapPin className="h-6 w-6 text-primary mr-4" />
-                    <span className="text-gray-700">123 Business Street, City, Country</span>
+                    <span className="text-gray-700">Flat No 131, Third floor, Priya Rani Residency, Plot No. 68, of Survey No. 403, Film Nagar, Shakipet, Hyderabad, Telangana</span>
                   </div>
                   <div className="flex items-center">
                     <Phone className="h-6 w-6 text-primary mr-4" />
-                    <span className="text-gray-700">+1 (555) 123-4567</span>
+                    <span className="text-gray-700">+91 6281855705</span>
                   </div>
                   <div className="flex items-center">
                     <Mail className="h-6 w-6 text-primary mr-4" />

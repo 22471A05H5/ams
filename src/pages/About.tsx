@@ -91,7 +91,7 @@ const About = () => {
                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                   <strong>Our Vision:</strong> To become India's most trusted digital growth partner for startups and SMEs, using advanced analytics to understand audiences, creating innovative campaigns that stand out, and leveraging the latest marketing technology to connect businesses with their ideal customers.
                 </p>
-                <p className="text-gray-600 mb-8 leading-relaxed">
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                   We are experts in using data, creativity, and technology to help startups thrive by finding their audience and standing out from the competition. Our goal is to build meaningful partnerships that drive sustainable growth and create impactful digital experiences.
                 </p>
                 
@@ -104,7 +104,7 @@ const About = () => {
                   ].map((item, index) => (
                     <div key={index} className="flex items-center">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                      <span className="text-gray-700">{item}</span>
+                      <span className="text-lg text-gray-700">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -136,7 +136,7 @@ const About = () => {
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
                       {value.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-lg text-gray-600 leading-relaxed">
                       {value.description}
                     </p>
                   </div>
@@ -170,7 +170,7 @@ const About = () => {
                   <div className="flex-grow">
                     <div className="text-sm font-semibold text-primary mb-1">{milestone.date}</div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">{milestone.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{milestone.desc}</p>
+                    <p className="text-lg text-gray-600 leading-relaxed">{milestone.desc}</p>
                   </div>
                 </div>
               ))}
@@ -196,7 +196,7 @@ const About = () => {
                   <div className="text-4xl md:text-5xl font-bold text-primary mb-2 counter-number">
                     {achievement.number}
                   </div>
-                  <div className="text-gray-600 font-medium">
+                  <div className="text-lg text-gray-600 font-medium">
                     {achievement.label}
                   </div>
                 </div>

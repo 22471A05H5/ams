@@ -4,11 +4,11 @@ import heroImg from "@/assets/1.webp";
 
 const HeroSection = () => {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/1234567890", "_blank");
+    window.open("https://wa.me/916281855705", "_blank");
   };
 
   const handleCall = () => {
-    window.location.href = "tel:+15551234567";
+    window.location.href = "tel:+916281855705";
   };
 
   return (

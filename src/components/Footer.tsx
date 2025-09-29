@@ -4,14 +4,14 @@ import logoShot from "@/assets/Screenshot_2025-09-26_125625-removebg-preview.png
 
 const Footer = () => {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/1234567890", "_blank");
+    window.open("https://wa.me/916281855705", "_blank");
   };
 
   const handleSocialLink = (platform: string) => {
     const urls = {
       facebook: "https://facebook.com/yourcompany",
       twitter: "https://twitter.com/yourcompany", 
-      instagram: "https://instagram.com/yourcompany",
+      instagram: "https://www.instagram.com/ams_elevatex?igsh=MXJsaGdna3RvamtiMw==",
       linkedin: "https://linkedin.com/company/yourcompany"
     };
     window.open(urls[platform as keyof typeof urls], "_blank");
@@ -91,28 +91,28 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-4">Our Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/services/seo" className="text-gray-400 hover:text-primary transition-colors">
-                  SEO Optimization
-                </Link>
-              </li>
-              <li>
                 <Link to="/services/social-media" className="text-gray-400 hover:text-primary transition-colors">
-                  Social Media Marketing
+                  Social Media Content & Handling
                 </Link>
               </li>
               <li>
-                <Link to="/services/ppc" className="text-gray-400 hover:text-primary transition-colors">
-                  PPC Advertising
+                <Link to="/services/leads" className="text-gray-400 hover:text-primary transition-colors">
+                  Leads Generation & Management
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/performance" className="text-gray-400 hover:text-primary transition-colors">
+                  Performance Marketing
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/branding" className="text-gray-400 hover:text-primary transition-colors">
+                  Branding & Creative Designs
                 </Link>
               </li>
               <li>
                 <Link to="/services/web-design" className="text-gray-400 hover:text-primary transition-colors">
-                  Web Design
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/content-marketing" className="text-gray-400 hover:text-primary transition-colors">
-                  Content Marketing
+                  Web Development
                 </Link>
               </li>
             </ul>
@@ -122,23 +122,23 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4">Contact Us</h3>
             <div className="space-y-3">
-              <div className="flex items-center text-gray-400">
-                <MapPin className="h-5 w-5 mr-3 text-primary" />
-                <span>123 Business Street, City, Country</span>
+              <div className="flex items-start text-gray-400">
+                <MapPin className="h-5 w-5 mr-3 text-primary flex-shrink-0 mt-0.5" />
+                <span className="leading-relaxed">Flat No 131, Third floor, Priya Rani Residency, Plot No. 68, of Survey No. 403, Film Nagar, Shakipet, Hyderabad, Telangana</span>
               </div>
               <div className="flex items-center text-gray-400">
-                <Phone className="h-5 w-5 mr-3 text-primary" />
-                <span>+1 (555) 123-4567</span>
+                <Phone className="h-5 w-5 mr-3 text-primary flex-shrink-0" />
+                <span>+91 6281855705</span>
               </div>
               <div className="flex items-center text-gray-400">
-                <Mail className="h-5 w-5 mr-3 text-primary" />
+                <Mail className="h-5 w-5 mr-3 text-primary flex-shrink-0" />
                 <span>info@amselevatex.com</span>
               </div>
               <button
                 onClick={handleWhatsApp}
                 className="flex items-center text-gray-400 hover:text-primary transition-colors"
               >
-                <MessageCircle className="h-5 w-5 mr-3 text-primary" />
+                <MessageCircle className="h-5 w-5 mr-3 text-primary flex-shrink-0" />
                 <span>Chat on WhatsApp</span>
               </button>
             </div>
@@ -147,7 +147,7 @@ const Footer = () => {
 
         <div className="border-t border-white/10 mt-0 pt-8 text-center">
           <p className="text-gray-400">
-            © 2024 AMS ElevateX. All rights reserved. | Privacy Policy | Terms of Service
+            © 2025 AMS ElevateX. All rights reserved. | Privacy Policy | Terms of Service
           </p>
         </div>
       </div>

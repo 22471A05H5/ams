@@ -3,25 +3,25 @@ import { Star, Quote } from "lucide-react";
 const TestimonialsSection = () => {
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart Inc",
+      name: "Priya Sharma",
+      role: "Digital Marketing Manager, StartupHub",
       content: "AMS ElevateX transformed our online presence completely. Our website traffic increased by 300% and our conversion rates doubled within just 6 months.",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
     },
     {
-      name: "Michael Chen", 
-      role: "Marketing Director, GrowthCorp",
+      name: "Rajesh Kumar", 
+      role: "Marketing Director, GrowthHub India",
       content: "The team's expertise in PPC advertising helped us achieve a 400% ROI on our ad spend. Their strategies are data-driven and results-focused.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
     },
     {
-      name: "Emily Davis",
-      role: "Founder, StyleBoutique",
+      name: "Anita Patel",
+      role: "Founder, StyleCraft Boutique",
       content: "Their social media marketing campaigns boosted our brand awareness significantly. We saw a 250% increase in followers and engagement rates.",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face"
     }
   ];
 

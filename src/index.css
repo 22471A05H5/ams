@@ -796,13 +796,15 @@
     border-width: 8px;
     border-radius: 20px;
   }
+  
+  /* Enhanced text size for larger mobile screens */
   .hero-title {
-    @apply text-xl md:text-3xl;
-    line-height: 1.2;
+    font-size: 2.75rem !important;
+    line-height: 1.2 !important;
   }
   .hero-subtitle {
-    @apply text-sm md:text-base;
-    line-height: 1.4;
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
   }
   .hero-media-shadow {
     left: 20px;
@@ -839,12 +841,12 @@
     margin-bottom: 0;
   }
   .hero-title {
-    @apply text-lg md:text-2xl;
-    line-height: 1.2;
+    font-size: 2.25rem !important;
+    line-height: 1.2 !important;
   }
   .hero-subtitle {
-    @apply text-xs md:text-sm;
-    line-height: 1.4;
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
   }
   .hero-media-shadow {
     left: 16px;
@@ -880,12 +882,12 @@
     margin-bottom: 0;
   }
   .hero-title {
-    @apply text-base md:text-xl;
-    line-height: 1.1;
+    font-size: 2rem !important;
+    line-height: 1.1 !important;
   }
   .hero-subtitle {
-    @apply text-xs;
-    line-height: 1.3;
+    font-size: 0.95rem !important;
+    line-height: 1.3 !important;
   }
   .hero-cta {
     @apply px-4 py-2 text-xs;
@@ -1069,15 +1071,17 @@
     margin-top: 1.5rem !important;
   }
   
-  /* Optimize mobile text spacing */
+  /* Optimize mobile text spacing and size */
   .hero-title {
     margin-bottom: 1rem !important;
     line-height: 1.1 !important;
+    font-size: 2.5rem !important; /* Increased from default mobile size */
   }
   
   .hero-subtitle {
     margin-bottom: 1.5rem !important;
     line-height: 1.3 !important;
+    font-size: 1.125rem !important; /* Increased from default mobile size */
   }
   
   /* Reduce CTA button spacing on mobile */
